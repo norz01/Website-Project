@@ -1,0 +1,718 @@
+/* --- Color Variables --- */
+:root {
+  --ferrari-red: #e60000;
+  --ferrari-black: #000000;
+  --ferrari-dark-grey: #1a1a1a;
+  --ferrari-medium-grey: #2a2a2a;
+  --ferrari-gold: #d4af37;
+  --text-light: #f4f4f4;
+  --text-medium: #cccccc;
+  --text-dark: #333333;
+  --background-light: #ffffff;
+}
+
+/* Basic Reset & Body Style - Dark Theme */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  background-color: var(--ferrari-black);
+  color: var(--text-light);
+  padding-top: 70px;
+  overflow-x: hidden;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+ul {
+  list-style: none;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- Header Styling --- */
+.main-header {
+  background-color: var(--ferrari-black);
+  color: var(--text-light);
+  padding: 10px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: background-color 0.3s ease;
+}
+.header-container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo a {
+  font-size: 1.8em;
+  font-weight: 700;
+  color: var(--text-light);
+  letter-spacing: 1px;
+}
+.main-nav ul {
+  display: flex;
+  align-items: stretch;
+  height: 100%;
+}
+.main-nav ul li {
+  margin-left: 35px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.main-nav ul li > a {
+  color: var(--text-medium);
+  text-transform: uppercase;
+  font-size: 0.85em;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 20px 0;
+  transition: color 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.main-nav ul li > a i {
+  font-size: 0.6em;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+.main-nav ul li > a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  bottom: 15px;
+  right: 50%;
+  background: var(--ferrari-gold);
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  opacity: 0;
+}
+.main-nav ul li:hover > a::after {
+  width: 100%;
+  left: 0;
+  right: auto;
+  opacity: 1;
+}
+.main-nav ul li:hover > a {
+  color: var(--text-light);
+}
+.main-nav ul li.dropdown:hover > a i {
+  transform: rotate(180deg);
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--ferrari-medium-grey);
+  min-width: 240px;
+  z-index: 1001;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 0 0 5px 5px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, visibility 0s ease 0.3s, transform 0.3s ease;
+}
+.main-nav ul li.dropdown:hover .dropdown-menu {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+.dropdown-menu li {
+  margin: 0;
+}
+.dropdown-menu li a {
+  display: block;
+  height: auto;
+  padding: 12px 20px;
+  color: var(--text-medium);
+  font-size: 0.9em;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.dropdown-menu li a::after {
+  display: none;
+}
+.dropdown-menu li a i {
+  display: none;
+}
+.dropdown-menu li a:hover {
+  background-color: var(--ferrari-red);
+  color: var(--text-light);
+}
+.header-aux a {
+  color: var(--text-medium);
+  font-size: 1.2em;
+  margin-left: 20px;
+  transition: color 0.3s ease;
+}
+.header-aux a:hover {
+  color: var(--text-light);
+}
+.mobile-nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-light);
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+/* --- Hero Section Styling (Restored Specific Background Image URL) --- */
+.hero {
+  height: calc(100vh - 70px);
+  background-color: var(--ferrari-dark-grey); /* Fallback color */
+  /* **** Using the specific Unsplash URL from the older example **** */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
+    url("https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-light);
+  position: relative;
+}
+.hero-content {
+  max-width: 800px;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+.hero h1 {
+  font-size: 4em;
+  font-weight: 700;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+.hero p {
+  font-size: 1.4em;
+  font-weight: 300;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+/* Button styles are still here */
+.cta-button {
+  display: inline-block;
+  background-color: var(--ferrari-red);
+  color: var(--text-light);
+  padding: 15px 35px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+.cta-button:hover {
+  background-color: #b30000;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Image Animation Keyframes & Base Styles --- */
+@keyframes kenburns {
+  0% {
+    transform: scale(1.05) translate(0, 0);
+  }
+  100% {
+    transform: scale(1.2) translate(-3%, 2%);
+  }
+}
+.ken-burns-wrapper {
+  position: relative;
+  overflow: hidden;
+  background-color: #333;
+}
+.ken-burns-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  animation: kenburns 25s infinite alternate ease-in-out;
+}
+.ken-burns-wrapper:hover .ken-burns-image,
+.carousel-slide:hover .ken-burns-image {
+  animation-play-state: paused;
+}
+
+/* --- General Content Section Styling --- */
+.content-section {
+  padding: 100px 30px;
+  max-width: 1600px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.content-section.dark-bg {
+  background-color: var(--ferrari-dark-grey);
+  color: var(--text-light);
+}
+.content-section.light-bg {
+  background-color: var(--background-light);
+  color: var(--text-dark);
+}
+.section-title {
+  text-align: center;
+  font-size: 2.8em;
+  margin-bottom: 60px;
+  font-weight: 600;
+  color: var(--text-light);
+}
+.light-bg .section-title {
+  color: var(--text-dark);
+}
+
+/* --- Models Section (Apply Animation) --- */
+.models-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+}
+.model-card {
+  background-color: var(--ferrari-medium-grey);
+  color: var(--text-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease,
+    border-top-color 0.3s ease;
+  text-align: center;
+  border-top: 4px solid transparent;
+  display: flex;
+  flex-direction: column;
+}
+.model-card-image-wrapper {
+  height: 200px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+.model-card img {
+  background-color: #555;
+}
+.model-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-top-color: var(--ferrari-red);
+}
+.model-card-content {
+  padding: 25px;
+}
+.model-card h3 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: var(--text-light);
+}
+.model-card p {
+  font-size: 0.95em;
+  color: var(--text-medium);
+  margin-bottom: 20px;
+}
+.cta-button-small {
+  background-color: var(--ferrari-dark-grey);
+  border: 1px solid #555;
+  color: var(--text-light);
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 3px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  display: inline-block;
+}
+.model-card .cta-button-small:hover {
+  background-color: var(--ferrari-red);
+  border-color: var(--ferrari-red);
+}
+
+/* --- Design Philosophy Section (Apply Animation) --- */
+.design-section .container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 50px;
+}
+.design-section .image-column {
+  flex: 1 1 50%;
+  min-width: 300px;
+}
+.design-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+}
+.design-section img {
+  background-color: #555;
+}
+.design-section .text-column {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+.design-section h3 {
+  font-size: 2.2em;
+  margin-bottom: 20px;
+  font-weight: 600;
+  color: var(--ferrari-gold);
+}
+.design-section p {
+  margin-bottom: 15px;
+  line-height: 1.8;
+  color: var(--text-medium);
+}
+.light-bg .design-section p {
+  color: #555;
+}
+.cta-button-outline-gold {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--ferrari-gold);
+  border: 2px solid var(--ferrari-gold);
+  padding: 13px 33px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
+}
+.cta-button-outline-gold:hover {
+  background-color: var(--ferrari-gold);
+  color: var(--ferrari-black);
+  transform: translateY(-2px);
+}
+.light-bg .cta-button-outline-gold {
+  color: var(--ferrari-gold);
+  border-color: var(--ferrari-gold);
+}
+.light-bg .cta-button-outline-gold:hover {
+  color: var(--background-light);
+  background-color: var(--ferrari-gold);
+}
+
+/* --- Performance / Carousel Section (Apply Animation) --- */
+.carousel-section h2 {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.carousel-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+.carousel-slide {
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+}
+.carousel-slide img {
+  background-color: #555;
+}
+.carousel-slide .slide-caption {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  background: rgba(0, 0, 0, 0.7);
+  color: var(--text-light);
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-size: 1.2em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease 0.2s, transform 0.4s ease 0.2s;
+  z-index: 5;
+}
+.carousel-slide.active .slide-caption {
+  opacity: 1;
+  transform: translateY(0);
+}
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  font-size: 2em;
+  padding: 10px 15px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+.carousel-button:hover {
+  background-color: var(--ferrari-red);
+}
+.carousel-button.prev {
+  left: 15px;
+}
+.carousel-button.next {
+  right: 15px;
+}
+.carousel-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* --- News Section --- */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+.news-card {
+  background: var(--ferrari-medium-grey);
+  color: var(--text-light);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+}
+.news-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+.news-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background-color: #555;
+}
+.news-card-content {
+  padding: 25px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.news-card h3 {
+  font-size: 1.3em;
+  margin-bottom: 10px;
+  color: var(--text-light);
+}
+.news-card p {
+  font-size: 0.9em;
+  color: var(--text-medium);
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+.news-card .read-more {
+  color: var(--ferrari-red);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  align-self: flex-start;
+}
+.news-card .read-more:hover {
+  text-decoration: underline;
+}
+
+/* --- Footer Styling --- */
+.main-footer {
+  background-color: var(--ferrari-black);
+  color: #aaa;
+  padding: 60px 30px;
+  text-align: center;
+  font-size: 0.9em;
+}
+.main-footer p {
+  margin-bottom: 10px;
+}
+.main-footer a {
+  color: var(--text-light);
+  margin: 0 10px;
+  transition: color 0.3s ease;
+}
+.main-footer a:hover {
+  color: var(--ferrari-red);
+  text-decoration: underline;
+}
+.footer-links {
+  margin-bottom: 20px;
+}
+
+/* --- Scroll Animation Classes (Unchanged) --- */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in {
+  transform: translateY(30px);
+}
+.slide-in-left {
+  transform: translateX(-50px);
+}
+.slide-in-right {
+  transform: translateX(50px);
+}
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* --- Responsive --- */
+@media (max-width: 992px) {
+  .main-nav ul li.dropdown .dropdown-menu {
+    display: none !important;
+  }
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--ferrari-black);
+    flex-direction: column;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+  }
+  .main-nav.active {
+    display: flex;
+  }
+  .main-nav ul {
+    flex-direction: column;
+    width: 100%;
+  }
+  .main-nav ul li {
+    margin: 0;
+    text-align: center;
+  }
+  .main-nav ul li > a {
+    display: block;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    margin: 0;
+    font-size: 1em;
+    color: var(--text-medium);
+    height: auto;
+  }
+  .main-nav ul li > a::after {
+    display: none;
+  }
+  .main-nav ul li > a i {
+    display: none;
+  }
+  .main-nav ul li > a:hover {
+    background-color: #222;
+    color: var(--text-light);
+  }
+  .main-nav ul li:last-child > a {
+    border-bottom: none;
+  }
+  .header-aux {
+    display: none;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    color: var(--text-light);
+  }
+
+  .hero h1 {
+    font-size: 2.5em;
+  }
+  .hero p {
+    font-size: 1.1em;
+  }
+  .content-section {
+    padding: 60px 20px;
+  }
+  .section-title {
+    font-size: 2.2em;
+    margin-bottom: 40px;
+  }
+  .design-section .container {
+    gap: 30px;
+  }
+  .carousel-slide {
+    height: 400px;
+  }
+}
+@media (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+  .main-header {
+    padding: 10px 0;
+  }
+  .logo a {
+    font-size: 1.5em;
+  }
+  .hero h1 {
+    font-size: 2em;
+  }
+  .hero p {
+    font-size: 1em;
+  }
+  .cta-button {
+    padding: 12px 25px;
+    font-size: 0.9em;
+  }
+  .design-section .image-column,
+  .design-section .text-column {
+    flex: 1 1 100%;
+  }
+  .carousel-slide {
+    height: 300px;
+  }
+  .carousel-slide .slide-caption {
+    font-size: 1em;
+    padding: 10px 15px;
+    bottom: 20px;
+    left: 20px;
+  }
+  .carousel-button {
+    font-size: 1.5em;
+    padding: 8px 12px;
+  }
+  .design-image-wrapper {
+    aspect-ratio: 3 / 2;
+  }
+}
