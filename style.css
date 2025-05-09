@@ -59,6 +59,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 50px;
 }
 .logo a {
   font-size: 1.8em;
@@ -66,6 +67,8 @@ img {
   color: var(--text-light);
   letter-spacing: 1px;
 }
+
+/* Desktop Navigation */
 .main-nav ul {
   display: flex;
   align-items: stretch;
@@ -90,7 +93,8 @@ img {
   align-items: center;
   height: 100%;
 }
-.main-nav ul li > a i {
+.main-nav ul li > a i.fa-chevron-down {
+  /* Target spesifik ikon chevron */
   font-size: 0.6em;
   margin-left: 8px;
   transition: transform 0.3s ease;
@@ -116,9 +120,11 @@ img {
 .main-nav ul li:hover > a {
   color: var(--text-light);
 }
-.main-nav ul li.dropdown:hover > a i {
+.main-nav ul li.dropdown:hover > a i.fa-chevron-down {
   transform: rotate(180deg);
 }
+
+/* Dropdown Menu Styling */
 .dropdown-menu {
   display: none;
   position: absolute;
@@ -169,6 +175,8 @@ img {
   background-color: var(--ferrari-red);
   color: var(--text-light);
 }
+
+/* Header Auxiliary (Search Icon) */
 .header-aux a {
   color: var(--text-medium);
   font-size: 1.2em;
@@ -178,20 +186,23 @@ img {
 .header-aux a:hover {
   color: var(--text-light);
 }
+
+/* Mobile Navigation Toggle Button */
 .mobile-nav-toggle {
   display: none;
   background: none;
   border: none;
   color: var(--text-light);
-  font-size: 1.5em;
+  font-size: 1.8em;
   cursor: pointer;
+  padding: 5px;
+  z-index: 1002;
 }
 
-/* --- Hero Section Styling (Restored Specific Background Image URL) --- */
+/* --- Hero Section Styling --- */
 .hero {
   height: calc(100vh - 70px);
-  background-color: var(--ferrari-dark-grey); /* Fallback color */
-  /* **** Using the specific Unsplash URL from the older example **** */
+  background-color: var(--ferrari-dark-grey);
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)),
     url("https://images.unsplash.com/photo-1583121274602-3e2820c69888?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80");
   background-size: cover;
@@ -222,7 +233,6 @@ img {
   margin-bottom: 30px;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
 }
-/* Button styles are still here */
 .cta-button {
   display: inline-block;
   background-color: var(--ferrari-red);
@@ -292,13 +302,13 @@ img {
   font-size: 2.8em;
   margin-bottom: 60px;
   font-weight: 600;
-  color: var(--text-light);
+  color: var(--text-light); /* Default untuk dark-bg */
 }
 .light-bg .section-title {
   color: var(--text-dark);
 }
 
-/* --- Models Section (Apply Animation) --- */
+/* --- Models Section --- */
 .models-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -322,10 +332,9 @@ img {
   width: 100%;
   position: relative;
   overflow: hidden;
-}
-.model-card img {
   background-color: #555;
 }
+
 .model-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -333,6 +342,7 @@ img {
 }
 .model-card-content {
   padding: 25px;
+  flex-grow: 1;
 }
 .model-card h3 {
   font-size: 1.5em;
@@ -362,7 +372,7 @@ img {
   border-color: var(--ferrari-red);
 }
 
-/* --- Design Philosophy Section (Apply Animation) --- */
+/* --- Design Philosophy Section --- */
 .design-section .container {
   display: flex;
   flex-wrap: wrap;
@@ -379,10 +389,9 @@ img {
   border-radius: 8px;
   width: 100%;
   aspect-ratio: 4 / 3;
-}
-.design-section img {
   background-color: #555;
 }
+
 .design-section .text-column {
   flex: 1 1 45%;
   min-width: 300px;
@@ -413,6 +422,7 @@ img {
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
   cursor: pointer;
+  margin-top: 15px;
 }
 .cta-button-outline-gold:hover {
   background-color: var(--ferrari-gold);
@@ -428,8 +438,8 @@ img {
   background-color: var(--ferrari-gold);
 }
 
-/* --- Performance / Carousel Section (Apply Animation) --- */
-.carousel-section h2 {
+/* --- Performance / Carousel Section --- */
+.carousel-section h2.section-title {
   text-align: center;
   margin-bottom: 40px;
 }
@@ -450,10 +460,9 @@ img {
   position: relative;
   overflow: hidden;
   height: 600px;
+  background-color: #444;
 }
-.carousel-slide img {
-  background-color: #555;
-}
+
 .carousel-slide .slide-caption {
   position: absolute;
   bottom: 30px;
@@ -550,6 +559,7 @@ img {
   font-size: 0.8em;
   letter-spacing: 1px;
   align-self: flex-start;
+  margin-top: auto;
 }
 .news-card .read-more:hover {
   text-decoration: underline;
@@ -579,7 +589,7 @@ img {
   margin-bottom: 20px;
 }
 
-/* --- Scroll Animation Classes (Unchanged) --- */
+/* --- Scroll Animation Classes --- */
 .animate-on-scroll {
   opacity: 0;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -603,6 +613,7 @@ img {
   .main-nav ul li.dropdown .dropdown-menu {
     display: none !important;
   }
+
   .main-nav {
     display: none;
     position: absolute;
@@ -613,10 +624,13 @@ img {
     flex-direction: column;
     padding: 10px 0;
     border-top: 1px solid #333;
+    z-index: 999;
   }
+
   .main-nav.active {
     display: flex;
   }
+
   .main-nav ul {
     flex-direction: column;
     width: 100%;
@@ -637,7 +651,7 @@ img {
   .main-nav ul li > a::after {
     display: none;
   }
-  .main-nav ul li > a i {
+  .main-nav ul li > a i.fa-chevron-down {
     display: none;
   }
   .main-nav ul li > a:hover {
@@ -647,60 +661,79 @@ img {
   .main-nav ul li:last-child > a {
     border-bottom: none;
   }
+
   .header-aux {
     display: none;
   }
   .mobile-nav-toggle {
     display: block;
-    color: var(--text-light);
   }
 
   .hero h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
   }
   .hero p {
-    font-size: 1.1em;
+    font-size: 1.2em;
   }
   .content-section {
-    padding: 60px 20px;
+    padding: 80px 20px;
   }
   .section-title {
-    font-size: 2.2em;
-    margin-bottom: 40px;
+    font-size: 2.4em;
+    margin-bottom: 50px;
   }
   .design-section .container {
     gap: 30px;
   }
   .carousel-slide {
-    height: 400px;
+    height: 450px;
   }
 }
+
 @media (max-width: 768px) {
   body {
     padding-top: 60px;
   }
   .main-header {
-    padding: 10px 0;
+    padding: 5px 0;
+  }
+  .header-container {
+    padding: 0 20px;
+    min-height: 50px;
   }
   .logo a {
-    font-size: 1.5em;
+    font-size: 1.6em;
   }
+  .mobile-nav-toggle {
+    font-size: 1.6em;
+  }
+
   .hero h1 {
-    font-size: 2em;
+    font-size: 2.2em;
   }
   .hero p {
-    font-size: 1em;
+    font-size: 1.1em;
   }
   .cta-button {
     padding: 12px 25px;
     font-size: 0.9em;
   }
+
+  .section-title {
+    font-size: 2em;
+    margin-bottom: 40px;
+  }
+
   .design-section .image-column,
   .design-section .text-column {
     flex: 1 1 100%;
   }
+  .design-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
   .carousel-slide {
-    height: 300px;
+    height: 350px;
   }
   .carousel-slide .slide-caption {
     font-size: 1em;
@@ -712,7 +745,136 @@ img {
     font-size: 1.5em;
     padding: 8px 12px;
   }
-  .design-image-wrapper {
-    aspect-ratio: 3 / 2;
+}
+
+/* --- Hamburger Icon CSS (Pure CSS) --- */
+.hamburger {
+  padding: 10px 8px;
+  display: none;
+  cursor: pointer;
+  transition-property: opacity, filter;
+  transition-duration: 0.15s;
+  transition-timing-function: linear;
+  font: inherit;
+  color: inherit;
+  text-transform: none;
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  overflow: visible;
+}
+.hamburger:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active:hover {
+  opacity: 0.7;
+}
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+  background-color: var(--text-light);
+}
+
+.hamburger-box {
+  width: 30px;
+  height: 24px;
+  display: inline-block;
+  position: relative;
+}
+
+.hamburger-inner {
+  display: block;
+  top: 50%;
+  margin-top: -1.5px;
+}
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 100%;
+  height: 3px;
+  background-color: var(--text-light);
+  border-radius: 2px;
+  position: absolute;
+  transition-property: transform;
+  transition-duration: 0.15s;
+  transition-timing-function: ease;
+}
+.hamburger-inner::before,
+.hamburger-inner::after {
+  content: "";
+  display: block;
+}
+.hamburger-inner::before {
+  top: -8px;
+}
+.hamburger-inner::after {
+  bottom: -8px;
+}
+
+.hamburger--squeeze .hamburger-inner {
+  transition-duration: 0.075s;
+  transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+.hamburger--squeeze .hamburger-inner::before {
+  transition: top 0.075s 0.12s ease, opacity 0.075s ease;
+}
+.hamburger--squeeze .hamburger-inner::after {
+  transition: bottom 0.075s 0.12s ease,
+    transform 0.075s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.hamburger--squeeze.is-active .hamburger-inner {
+  transform: rotate(45deg);
+  transition-delay: 0.12s;
+  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.hamburger--squeeze.is-active .hamburger-inner::before {
+  top: 0;
+  opacity: 0;
+  transition: top 0.075s ease, opacity 0.075s 0.12s ease;
+}
+.hamburger--squeeze.is-active .hamburger-inner::after {
+  bottom: 0;
+  transform: rotate(-90deg);
+  transition: bottom 0.075s ease,
+    transform 0.075s 0.12s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+@media (max-width: 992px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    display: none;
+  }
+
+  .main-nav.active {
+    display: flex;
+  }
+
+  .header-aux {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8em;
+  }
+  .hero p {
+    font-size: 1em;
+  }
+  .section-title {
+    font-size: 1.8em;
+  }
+  .models-grid {
+    grid-template-columns: 1fr;
+  }
+  .carousel-slide {
+    height: 300px;
+  }
+  .news-grid {
+    grid-template-columns: 1fr;
   }
 }

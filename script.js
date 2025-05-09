@@ -1,14 +1,22 @@
 // --- Mobile Menu Toggle ---
 const menuToggle = document.querySelector(".mobile-nav-toggle");
 const mainNav = document.querySelector("#main-nav-menu");
-menuToggle.addEventListener("click", () => {
-  const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
-  menuToggle.setAttribute("aria-expanded", !isExpanded);
-  mainNav.classList.toggle("active");
-  const icon = menuToggle.querySelector("i");
-  icon.classList.toggle("fa-bars");
-  icon.classList.toggle("fa-times");
-});
+
+if (menuToggle && mainNav) {
+  menuToggle.addEventListener("click", () => {
+    const isExpanded = menuToggle.getAttribute("aria-expanded") === "true";
+
+    menuToggle.setAttribute("aria-expanded", !isExpanded);
+
+    menuToggle.classList.toggle("is-active");
+
+    mainNav.classList.toggle("active");
+  });
+} else {
+  console.error(
+    "Mobile menu toggle button or main navigation menu not found. Check classes and IDs."
+  );
+}
 
 // --- Scroll Animations (Intersection Observer) ---
 const observerOptions = { root: null, rootMargin: "0px", threshold: 0.1 };
@@ -35,14 +43,14 @@ if (carouselTrack) {
   const prevButton = document.querySelector(".carousel-button.prev");
 
   if (slides.length > 0) {
-    const slideWidth = slides[0].getBoundingClientRect().width; // Although not used directly here, good to have if needed later
+    // const slideWidth = slides[0].getBoundingClientRect().width;
     let currentIndex = 0;
 
     const moveToSlide = (track, currentSlide, targetSlide) => {
       if (targetSlide) {
-        track.style.transform = "translateX(-" + targetSlide.offsetLeft + "px)";
-        if (currentSlide) currentSlide.classList.remove("active"); // Remove active from previous
-        targetSlide.classList.add("active"); // Add active to current
+        track.style.transform = `translateX(-${targetSlide.offsetLeft}px)`;
+        if (currentSlide) currentSlide.classList.remove("active");
+        targetSlide.classList.add("active");
       }
     };
 
@@ -54,7 +62,10 @@ if (carouselTrack) {
     };
 
     // Initialize first slide as active
-    if (slides[currentIndex]) slides[currentIndex].classList.add("active");
+    if (slides[currentIndex]) {
+      slides[currentIndex].classList.add("active");
+      // moveToSlide(carouselTrack, null, slides[currentIndex]);
+    }
     updateButtons(); // Initial button state
 
     if (nextButton) {
@@ -80,9 +91,14 @@ if (carouselTrack) {
         }
       });
     }
+
+    window.addEventListener("resize", () => {
+      if (slides.length > 0 && slides[currentIndex]) {
+        moveToSlide(carouselTrack, slides[currentIndex], slides[currentIndex]);
+      }
+    });
   } else {
     console.log("No slides found in the carousel track.");
-    // Optionally disable buttons if no slides
     if (prevButton) prevButton.style.display = "none";
     if (nextButton) nextButton.style.display = "none";
   }
