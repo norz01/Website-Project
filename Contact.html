@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - HopeSpire Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Global Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden; /* Prevent horizontal scrollbars */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; color: #005A8D; } /* Primary Blue */
+        h2 { font-size: 2rem; color: #0077B6; } /* Slightly Lighter Blue */
+        h3 { font-size: 1.5rem; color: #005A8D; }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077B6; /* Link color */
+        }
+
+        a:hover {
+            color: #00A9E0; /* Lighter blue for hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+        .section-padding-bg {
+            padding: 60px 0;
+            background-color: #eef7fa; /* Light blueish gray */
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .logo-link h1 {
+            font-size: 1.8rem; /* Smaller for header */
+            margin-bottom: 0; /* Reset margin for h1 in logo */
+        }
+
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #005A8D;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FFA500; /* Accent Orange */
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: #00A9E0; /* Highlight active link */
+        }
+
+
+        .nav-toggle {
+            display: none; /* Hidden by default */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 3px;
+            background-color: #005A8D;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: #005A8D;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger::before { top: -8px; }
+        .hamburger::after { bottom: -8px; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background-color: #FFA500; /* Accent Orange */
+            color: #fff;
+            border: 2px solid #FFA500;
+        }
+
+        .btn-primary:hover {
+            background-color: #cc8400; /* Darker Orange */
+            color: #fff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background-color: #0077B6; /* Primary Blue */
+            color: #fff;
+            border: 2px solid #0077B6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #005A8D; /* Darker Blue */
+            color: #fff;
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Page Title Section (for subpages) */
+        .page-title-section {
+            background-color: #eef7fa;
+            padding: 40px 0;
+            overflow: hidden; /* For animation */
+        }
+         .page-title-section .container > h2,
+         .page-title-section .container > p {
+            opacity: 0;
+            transform: translateY(20px);
+         }
+
+        /* Contact and Feedback Form Section */
+        .contact-form-section { /* Added for potential overall section animation */
+            overflow: hidden; 
+        }
+        .contact-content-wrapper {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap; /* For smaller screens */
+        }
+        .contact-form-container {
+            flex: 2; /* Takes more space */
+        }
+        .contact-info-container {
+            flex: 1; /* Takes less space */
+            background-color: #eef7fa;
+            padding: 25px;
+            border-radius: 8px;
+        }
+        .contact-info-container h3 {
+            margin-top: 20px;
+            border-bottom: 2px solid #0077B6;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+        .contact-info-container h3:first-child {
+            margin-top: 0;
+        }
+        .contact-info-container p {
+            margin-bottom: 10px;
+        }
+
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #444;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #0077B6;
+            box-shadow: 0 0 8px rgba(0, 119, 182, 0.4);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        /* Map Section */
+        .map-section {
+            margin-top: 40px; 
+            background-color: #fff; 
+            padding-bottom: 0; 
+            overflow: hidden; /* for map animation */
+        }
+        .map-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .map-section iframe {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #00334E; /* Darker Blue for footer */
+            color: #e0e0e0;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+
+        /* === ANIMATION STYLES START === */
+        @keyframes page-title-load {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.slide-up {
+            transform: translateY(40px);
+        }
+        .animate-on-scroll.slide-from-left {
+            transform: translateX(-50px);
+        }
+        .animate-on-scroll.slide-from-right {
+            transform: translateX(50px);
+        }
+        .animate-on-scroll.scale-up {
+            transform: scale(0.9);
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+        /* === ANIMATION STYLES END === */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-link h1 {
+                font-size: 1.4rem;
+            }
+            .nav-toggle {
+                display: block;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-links a::after {
+                display: none;
+            }
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+
+            .nav-toggle.active .hamburger {
+                background-color: transparent;
+            }
+            .nav-toggle.active .hamburger::before {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .nav-toggle.active .hamburger::after {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .contact-content-wrapper {
+                flex-direction: column;
+            }
+            .contact-info-container {
+                margin-top: 30px;
+            }
+            /* ANIMATION: Adjust slide distances for smaller screens if needed */
+            .animate-on-scroll.slide-from-left { transform: translateX(-30px); }
+            .animate-on-scroll.slide-from-right { transform: translateX(30px); }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.3rem; }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .logo {
+                height: 40px;
+            }
+             .logo-link h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+             <a href="index.html" class="logo-link">
+                <img src="img/logo.png" alt="HopeSpire Foundation Logo" class="logo">
+                <h1>HopeSpire Foundation</h1>
+            </a>
+            <nav>
+                <button class="nav-toggle" aria-label="toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html">Company Profile</a></li>
+                    <li><a href="Management.html">Management Profile</a></li>
+                    <li><a href="gallery.html">Galleries/Activities</a></li>
+                    <li><a href="Contact.html" class="active">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-title-section">
+            <div class="container">
+                <!-- ANIMATION: Added classes for page title elements -->
+                <h2 class="animate-on-scroll fade-in slide-up">Get In Touch</h2>
+                <p class="animate-on-scroll fade-in slide-up" style="transition-delay: 0.1s;">We'd love to hear from you. Reach out with any questions, or to learn how you can support our cause.</p>
+            </div>
+        </section>
+
+        <section class="contact-form-section container section-padding">
+            <div class="contact-content-wrapper">
+                <!-- ANIMATION: Added classes to form container -->
+                <div class="contact-form-container animate-on-scroll fade-in slide-from-left">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+                <!-- ANIMATION: Added classes to info container -->
+                <div class="contact-info-container animate-on-scroll fade-in slide-from-right" style="transition-delay: 0.2s;">
+                    <h3>Contact Information</h3>
+                    <p><strong>Address:</strong><br>No 345 Jalan Alor Lintang, Kubang Kerian , Kuala Terengganu 75350 Singapore</p>
+                    <p><strong>Phone:</strong><br><a href="tel:+1234567890">(60) 19-446-9358</a></p>
+                    <p><strong>Email:</strong><br><a href="mailto:sufiazha1812@gmai.com">info@hopespire.org</a></p>
+                    
+                    <h3 id="donate">Support Us</h3>
+                    <p>Your generous donations help us continue our work. Every contribution makes a difference.</p>
+                    <a href="#" class="btn btn-secondary">Donate Online</a>
+
+                    <h3 id="volunteer">Volunteer With Us</h3>
+                    <p>Join our team of passionate volunteers and contribute your time and skills.</p>
+                    <a href="#" class="btn btn-secondary">Become a Volunteer</a>
+                </div>
+            </div>
+        </section>
+        
+        <section class="map-section">
+             <div class="container">
+                <!-- ANIMATION: Added classes to map heading -->
+                <h3 class="animate-on-scroll fade-in slide-up">Our Location</h3>
+            </div>
+            <!-- ANIMATION: Added classes to iframe parent or iframe itself if possible, here to iframe directly for simplicity -->
+            <iframe class="animate-on-scroll fade-in" style="transition-delay: 0.2s;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2449.6483765773814!2d103.09331467403018!3d5.239553271086112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7c100762853d1%3A0x130aab00cbea50b2!2sRumah%20Khairul%20Azha!5e1!3m2!1sen!2smy!4v1747191732265!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> HopeSpire Foundation. All Rights Reserved.</p>
+            <p>Empowering Communities, Inspiring Hope.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Mobile Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    navToggle.classList.toggle('active'); // For hamburger animation
+                });
+            }
+
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                if (anchor.getAttribute('href').length > 1) { 
+                    anchor.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                }
+            });
+
+            // === JAVASCRIPT FOR ANIMATIONS START ===
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // Optional: observer.unobserve(entry.target); 
+                    }
+                    // else { entry.target.classList.remove('is-visible'); } // For re-animation
+                });
+            }, {
+                threshold: 0.1 
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+            
+            const pageTitleHeading = document.querySelector('.page-title-section .container > h2');
+            const pageTitleParagraph = document.querySelector('.page-title-section .container > p');
+
+            if(pageTitleHeading && pageTitleParagraph){
+                 // For elements that should animate on page load (not scroll-dependent)
+                // We can ensure they become visible if already in viewport
+                const initialObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if(entry.isIntersecting){
+                            entry.target.classList.add('is-visible'); // Use is-visible for consistency if classes are already set
+                            initialObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.01 }); 
+
+                if (pageTitleHeading.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleHeading);
+                if (pageTitleParagraph.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleParagraph);
+            }
+            // === JAVASCRIPT FOR ANIMATIONS END ===
+
+
+            // Basic Form Submission Handling (Placeholder)
+            const actualContactForm = document.getElementById('contactForm'); // This form IS on this page
+            if (actualContactForm) {
+                actualContactForm.addEventListener('submit', function(e) {
+                    e.preventDefault(); 
+                    const name = actualContactForm.querySelector('#name').value;
+                    const email = actualContactForm.querySelector('#email').value;
+                    const message = actualContactForm.querySelector('#message').value;
+
+                    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+                    alert('Thank you for your message! (This is a demo - no data was sent)');
+                    actualContactForm.reset();
+                });
+            }
+
+            // const feedbackForm = document.getElementById('feedbackForm'); // This will be null
+        });
+    </script>
+</body>
+</html>

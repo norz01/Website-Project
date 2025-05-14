@@ -1,323 +1,940 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ferroro - Official Site</title>
-    <!-- Google Font (Poppins) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HopeSpire Foundation - Company Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Global Styles */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <!-- Link ke Fail CSS Luaran -->
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <header class="main-header">
-      <div class="header-container">
-        <div class="logo"><a href="#">FERRERO</a></div>
-        <nav class="main-nav" id="main-nav-menu">
-          <ul>
-            <li class="dropdown">
-              <a href="#models">Models <i class="fas fa-chevron-down"></i></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Ferroro Vulcan (SF90 Stradale)</a></li>
-                <li><a href="#">Ferroro Apex (812 Superfast)</a></li>
-                <li><a href="#">Ferroro Stealth (F8 Tributo)</a></li>
-                <li><a href="#">Ferroro Roma</a></li>
-                <li><a href="#">Ferroro Portofino M</a></li>
-                <li><a href="#">Ferroro Purosangue</a></li>
-                <li><a href="#">Icona Series</a></li>
-                <li><a href="#">Special Series</a></li>
-                <li><a href="#">Pre-Owned Cars</a></li>
-              </ul>
-            </li>
-            <li><a href="#design">Design</a></li>
-            <li><a href="#performance">Performance</a></li>
-            <li><a href="#news">News</a></li>
-            <li><a href="#about">About</a></li>
-          </ul>
-        </nav>
-        <div class="header-aux">
-          <a href="#" aria-label="Search"><i class="fas fa-search"></i></a>
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+            overflow-x: hidden; /* Prevent horizontal scrollbars from slide animations */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 2.5rem; color: #005A8D; } /* Primary Blue */
+        h2 { font-size: 2rem; color: #0077B6; } /* Slightly Lighter Blue */
+        h3 { font-size: 1.5rem; color: #005A8D; }
+
+        p {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077B6; /* Link color */
+        }
+
+        a:hover {
+            color: #00A9E0; /* Lighter blue for hover */
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .section-padding {
+            padding: 60px 0;
+        }
+        .section-padding-bg {
+            padding: 60px 0;
+            background-color: #eef7fa; /* Light blueish gray */
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo {
+            height: 50px;
+            margin-right: 10px;
+        }
+        .logo-link h1 {
+            font-size: 1.8rem; /* Smaller for header */
+            margin-bottom: 0; /* Reset margin for h1 in logo */
+        }
+
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            color: #005A8D;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: #FFA500; /* Accent Orange */
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+        .nav-links a.active {
+            color: #00A9E0; /* Highlight active link */
+        }
+
+
+        .nav-toggle {
+            display: none; /* Hidden by default */
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .hamburger {
+            display: block;
+            position: relative;
+            width: 25px;
+            height: 3px;
+            background-color: #005A8D;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger::before,
+        .hamburger::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 25px;
+            height: 3px;
+            background-color: #005A8D;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .hamburger::before { top: -8px; }
+        .hamburger::after { bottom: -8px; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow for hover */
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            margin: 5px;
+        }
+
+        .btn-primary {
+            background-color: #FFA500; /* Accent Orange */
+            color: #fff;
+            border: 2px solid #FFA500;
+        }
+
+        .btn-primary:hover {
+            background-color: #cc8400; /* Darker Orange */
+            color: #fff;
+            transform: translateY(-3px) scale(1.03); /* Enhanced hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .btn-secondary {
+            background-color: #0077B6; /* Primary Blue */
+            color: #fff;
+            border: 2px solid #0077B6;
+        }
+
+        .btn-secondary:hover {
+            background-color: #005A8D; /* Darker Blue */
+            color: #fff;
+            transform: translateY(-3px) scale(1.03); /* Enhanced hover */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* Hero Section CSS */
+        .hero {
+            background: linear-gradient(rgba(0, 90, 141, 0.85), rgba(0, 120, 182, 0.75));
+            color: #fff;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 15px;
+            overflow: hidden; /* For hero content animation */
+        }
+
+        .hero .hero-content {
+            background-image: url('img/hero-banner.jpg'); /* Adjusted path */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 1;
+             /* ANIMATION: Initial state for hero content */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: hero-content-load 0.8s 0.3s forwards ease-out; /* name duration delay fill-mode timing-function */
+        }
+
+        .hero .hero-content::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            z-index: -1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #fff;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #f0f0f0;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-content .btn {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* About Us Section */
+        .about-us h2, .news-slider-section h2, .our-impact h2, .call-to-action h2 { /* Added .news-slider-section h2 */
+            text-align: center;
+            margin-bottom: 40px;
+        }
+       
+        .about-content {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            overflow: hidden; /* Contain child animations */
+        }
+        .about-text {
+            flex: 1;
+        }
+        .about-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        .about-image img {
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease-out; /* Hover effect for image */
+        }
+        .about-image img:hover {
+            transform: scale(1.05);
+        }
+        .about-us ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+        .about-us ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* === NEWS SLIDER STYLES START === */
+        .news-slider-section {
+            background-color: #fff; 
+            overflow: hidden; /* Contain animations */
+        }
+        .news-slider {
+            position: relative;
+            max-width: 900px; /* Max width of the slider content */
+            margin: 0 auto; /* Center the slider */
+            overflow: hidden; /* Crucial for the sliding effect */
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .slides-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* This creates the slide animation */
+        }
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            display: flex; /* For side-by-side image and text */
+            align-items: center;
+            background-color: #fdfdfd;
+        }
+        .slide-image {
+            flex: 0 0 40%; /* Image takes 40% width */
+            max-height: 350px; /* Control image height */
+            overflow: hidden;
+        }
+        .slide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-content {
+            flex: 1; /* Text content takes remaining space */
+            padding: 25px 30px;
+        }
+        .slide-content h3 {
+            font-size: 1.6rem;
+            color: #005A8D;
+            margin-bottom: 10px;
+        }
+        .slide-content p {
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            color: #444;
+            line-height: 1.5;
+        }
+        .slide-content .btn-slide {
+            font-size: 0.8rem;
+            padding: 8px 18px;
+        }
+
+        /* Slider Navigation Arrows */
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px; /* Keep arrows slightly inset */
+            z-index: 10;
+        }
+        .slider-nav button {
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            padding: 10px 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            line-height: 1;
+        }
+        .slider-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        .prev-slide { margin-left: 5px; }
+        .next-slide { margin-right: 5px; }
+
+        /* Slider Dots */
+        .slider-dots {
+            text-align: center;
+            padding-top: 15px;
+        }
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+        .dot.active, .dot:hover {
+            background-color: #0077B6;
+        }
+        /* === NEWS SLIDER STYLES END === */
+
+
+        /* Our Impact Section */
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            margin: 15px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            min-width: 200px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover */
+        }
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #FFA500; /* Accent Orange */
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0;
+        }
+
+        /* Call to Action Section */
+        .call-to-action {
+            text-align: center;
+        }
+        .cta-buttons {
+            margin-top: 20px;
+        }
+
+
+        /* === ANIMATION STYLES START === */
+        @keyframes hero-content-load {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.slide-up {
+            transform: translateY(40px);
+        }
+        .animate-on-scroll.slide-from-left {
+            transform: translateX(-50px);
+        }
+        .animate-on-scroll.slide-from-right {
+            transform: translateX(50px);
+        }
+        .animate-on-scroll.scale-up {
+            transform: scale(0.9);
+        }
+        
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* Staggered animation delays for stat items */
+        .stat-item.animate-on-scroll:nth-child(1).is-visible { transition-delay: 0.1s; }
+        .stat-item.animate-on-scroll:nth-child(2).is-visible { transition-delay: 0.2s; }
+        .stat-item.animate-on-scroll:nth-child(3).is-visible { transition-delay: 0.3s; }
+        .stat-item.animate-on-scroll:nth-child(4).is-visible { transition-delay: 0.4s; }
+
+        /* Staggered animation for CTA buttons */
+        .cta-buttons .btn.animate-on-scroll:nth-child(1).is-visible { transition-delay: 0.1s; }
+        .cta-buttons .btn.animate-on-scroll:nth-child(2).is-visible { transition-delay: 0.2s; }
+        .cta-buttons .btn.animate-on-scroll:nth-child(3).is-visible { transition-delay: 0.3s; }
+
+        /* === ANIMATION STYLES END === */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo-link h1 {
+                font-size: 1.4rem; 
+            }
+            .nav-toggle {
+                display: block; 
+            }
+            .nav-links {
+                display: none; 
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 100%; 
+                left: 0;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                padding: 1rem 0;
+            }
+            .nav-links.active {
+                display: flex; 
+            }
+            .nav-links li {
+                margin: 0;
+                text-align: center;
+            }
+            .nav-links a {
+                display: block;
+                padding: 1rem;
+                border-bottom: 1px solid #eee;
+            }
+            .nav-links a::after {
+                display: none; 
+            }
+            .nav-links li:last-child a {
+                border-bottom: none;
+            }
+
+            .nav-toggle.active .hamburger {
+                background-color: transparent; 
+            }
+            .nav-toggle.active .hamburger::before {
+                transform: translateY(8px) rotate(45deg);
+            }
+            .nav-toggle.active .hamburger::after {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .hero { 
+                padding: 60px 15px; 
+            }
+            .hero .hero-content { 
+                padding: 30px 20px;
+                animation: hero-content-load 0.7s 0.2s forwards ease-out;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+            .about-image {
+                margin-top: 20px;
+            }
+            .animate-on-scroll.slide-from-left { transform: translateX(-30px); }
+            .animate-on-scroll.slide-from-right { transform: translateX(30px); }
+
+            /* News Slider Responsive */
+            .slide {
+                flex-direction: column; /* Stack image and text on small screens */
+                text-align: center;
+            }
+            .slide-image {
+                flex: 0 0 auto; /* Let image take its natural height */
+                width: 100%;
+                max-height: 250px; /* Adjust height for mobile */
+            }
+            .slide-content {
+                padding: 20px;
+            }
+            .slide-content h3 {
+                font-size: 1.4rem;
+            }
+            .slider-nav button {
+                padding: 8px 10px;
+                font-size: 1rem;
+            }
+
+
+            .impact-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            .stat-item {
+                width: 80%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.7rem; }
+            h3 { font-size: 1.3rem; }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            .logo {
+                height: 40px;
+            }
+             .logo-link h1 {
+                font-size: 1.2rem; 
+            }
+            .hero .hero-content { 
+                padding: 25px 15px;
+                animation: hero-content-load 0.6s 0.1s forwards ease-out;
+            }
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+            .slide-content h3 { font-size: 1.2rem; }
+            .slide-content p { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo-link">
+                <img src="img/logo.png" alt="HopeSpire Foundation Logo" class="logo">
+                <h1 class="animate-on-load fade-in-text">HopeSpire Foundation</h1>
+            </a>
+            <nav>
+                <button class="nav-toggle" aria-label="toggle navigation">
+                    <span class="hamburger"></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active">Company Profile</a></li>
+                    <li><a href="Management.html">Management Profile</a></li>
+                    <li><a href="gallery.html">Galleries/Activities</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                    <li><a href="feedback.html">Feedback</a></li>
+                </ul>
+            </nav>
         </div>
-        <button
-          class="mobile-nav-toggle hamburger hamburger--squeeze"
-          type="button"
-          aria-label="Toggle Navigation"
-          aria-controls="main-nav-menu"
-          aria-expanded="false"
-        >
-          <span class="hamburger-box">
-            <span class="hamburger-inner"></span>
-          </span>
-        </button>
-      </div>
     </header>
 
-    <!-- ****** HERO SECTION ****** -->
-    <section class="hero">
-      <div class="hero-content animate-on-scroll fade-in">
-        <h1>Ferroro F-9 Predator</h1>
-        <p>Experience Unrivaled Power and Design</p>
-        <a href="https://www.ferrari.com/en-MY" class="cta-button"
-          >Discover Models</a
-        >
-      </div>
-    </section>
-
-    <!-- ****** MODELS SECTION (GRID) ****** -->
-    <section class="content-section" id="models">
-      <h2 class="section-title animate-on-scroll fade-in">
-        Explore The Ferroro Range
-      </h2>
-      <div class="models-grid">
-        <!-- Card 1 -->
-        <div
-          class="model-card animate-on-scroll fade-in"
-          style="transition-delay: 0.1s"
-        >
-          <div class="model-card-image-wrapper ken-burns-wrapper">
-            <img
-              src="img/vulcan.jpg"
-              alt="Ferroro SF90"
-              class="ken-burns-image"
-            />
-          </div>
-          <div class="model-card-content">
-            <h3>Ferroro Vulcan</h3>
-            <p>Agility redefined...</p>
-            <a
-              href="https://www.ferrari.com/en-EN/auto/sf90-stradale"
-              class="cta-button-small"
-              >Learn More</a
-            >
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div
-          class="model-card animate-on-scroll fade-in"
-          style="transition-delay: 0.2s"
-        >
-          <div class="model-card-image-wrapper ken-burns-wrapper">
-            <img
-              src="img/Ferrari-812-Superfast.jpg"
-              alt="Ferroro 812 superfast"
-              class="ken-burns-image"
-            />
-          </div>
-          <div class="model-card-content">
-            <h3>Ferroro Apex</h3>
-            <p>The pinnacle of luxury...</p>
-            <a
-              href="https://www.butlertire.com/trending/posts/ferrari-812-superfast-code-name-stealth-fighter"
-              class="cta-button-small"
-              >Learn More</a
-            >
-          </div>
-        </div>
-        <!-- Card 3 -->
-        <div
-          class="model-card animate-on-scroll fade-in"
-          style="transition-delay: 0.3s"
-        >
-          <div class="model-card-image-wrapper ken-burns-wrapper">
-            <img
-              src="img/stealth.jpg"
-              alt="Ferroro Tributo"
-              class="ken-burns-image"
-            />
-          </div>
-          <div class="model-card-content">
-            <h3>Ferroro Stealth</h3>
-            <p>Command the road...</p>
-            <a
-              href="https://www.ferrari.com/en-EN/auto/f8-tributo"
-              class="cta-button-small"
-              >Learn More</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ****** DESIGN PHILOSOPHY SECTION ****** -->
-    <section class="content-section dark-bg design-section" id="design">
-      <div class="container">
-        <div class="image-column animate-on-scroll slide-in-left">
-          <div class="design-image-wrapper ken-burns-wrapper">
-            <img
-              src="img/sketch.jpg"
-              alt="Ferroro Design Sketch"
-              class="ken-burns-image"
-            />
-          </div>
-        </div>
-        <div class="text-column animate-on-scroll slide-in-right">
-          <h2
-            class="section-title"
-            style="text-align: left; margin-bottom: 20px"
-          >
-            Sculpted by Wind
-          </h2>
-          <h3>Our Design Philosophy</h3>
-          <p>
-            At Ferroro, Ferrari design blends cutting-edge performance with pure
-            Italian passion. Form follows function, but beauty and emotion drive
-            every line.
-          </p>
-          <p>
-            We sculpt speed. Ferroro design fuses advanced aerodynamics and
-            engineering with artistic mastery to create automotive forms that
-            perform as incredibly as they look....
-          </p>
-          <a
-            href="https://www.behance.net/search/projects/ferrari%20sketch%20"
-            class="cta-button-outline-gold"
-            >Explore Design</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- ****** PERFORMANCE CAROUSEL SECTION ****** -->
-    <section class="content-section light-bg carousel-section" id="performance">
-      <h2 class="section-title animate-on-scroll fade-in">
-        Unleash the Beast Within
-      </h2>
-      <div class="carousel-container animate-on-scroll fade-in">
-        <div class="carousel-track">
-          <div class="carousel-slide">
-            <img
-              src="img/engine.jpg"
-              alt="Ferroro Engine"
-              class="ken-burns-image"
-            />
-            <div class="slide-caption">
-              Heart of the Predator: The V12 Roars
+    <main>
+        <section class="hero">
+            <div class="hero-content container">
+                <h2>Building Brighter Futures, Together.</h2>
+                <p>Inspiring hope and creating lasting impact in our communities through dedicated action and sustainable programs.</p>
+                <a href="#about" class="btn btn-primary">Learn More</a>
+                <a href="Contact.html#donate" class="btn btn-secondary">Donate Now</a>
             </div>
-          </div>
-          <div class="carousel-slide">
-            <img
-              src="img/AERODYNAMICS.jpg"
-              alt="Ferroro Aerodynamics"
-              class="ken-burns-image"
-            />
-            <div class="slide-caption">
-              Mastering Airflow: Precision Aerodynamics
-            </div>
-          </div>
-          <div class="carousel-slide">
-            <img
-              src="img/handling.jpg"
-              alt="Ferroro Handling"
-              class="ken-burns-image"
-            />
-            <div class="slide-caption">
-              Ultimate Control: Agile and Responsive Handling
-            </div>
-          </div>
-        </div>
-        <button class="carousel-button prev" aria-label="Previous Slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-button next" aria-label="Next Slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
-      </div>
-    </section>
+        </section>
 
-    <!-- ****** NEWS SECTION ****** -->
-    <section class="content-section dark-bg" id="news">
-      <h2 class="section-title animate-on-scroll fade-in">
-        Latest From Ferroro
-      </h2>
-      <div class="news-grid">
-        <div
-          class="news-card animate-on-scroll fade-in"
-          style="transition-delay: 0.1s"
-        >
-          <img src="img/news 1.jpg" alt="News Item 1" />
-          <div class="news-card-content">
-            <h3>
-              Ferroro unveils new 296 Speciale hybrid models ahead of EV launch
-            </h3>
-            <p>Get a first look...</p>
-            <a
-              href="https://www.reuters.com/business/autos-transportation/ferrari-unveils-new-296-speciale-hybrid-models-ahead-ev-launch-2025-04-29/"
-              class="read-more"
-              >Read More
-              <i
-                class="fas fa-arrow-right"
-                style="font-size: 0.8em; margin-left: 5px"
-              ></i
-            ></a>
-          </div>
-        </div>
-        <div
-          class="news-card animate-on-scroll fade-in"
-          style="transition-delay: 0.2s"
-        >
-          <img
-            src="img/FERRARI_12CILINDRI_IF_GOLD_AWARD_2025-new00-Custom.jpg"
-            alt="News Item 2"
-          />
-          <div class="news-card-content">
-            <h3>
-              The Ferroro 12CILINDRI and the 12CILINDRI SPIDER win the if design
-              gold award
-            </h3>
-            <p>Form that is both exciting and reassuring...</p>
-            <a
-              href="https://www.carsifu.my/news/ferrari-v12-cars-win-award"
-              class="read-more"
-              >Read More
-              <i
-                class="fas fa-arrow-right"
-                style="font-size: 0.8em; margin-left: 5px"
-              ></i
-            ></a>
-          </div>
-        </div>
-        <div
-          class="news-card animate-on-scroll fade-in"
-          style="transition-delay: 0.3s"
-        >
-          <img src="img/images.jpg" alt="News Item 3" />
-          <div class="news-card-content">
-            <h3>Ferroro F1 upgrade plan and timeline for success revealed</h3>
-            <p>
-              Ferroro will start introducing major updates from Imola, and
-              expects to surge to the front of the field not long after...
-            </p>
-            <a
-              href="https://www.motorsport.com/f1/news/ferraris-f1-upgrade-plan-and-timeline-for-success-revealed/10717907/"
-              class="read-more"
-              >Read More
-              <i
-                class="fas fa-arrow-right"
-                style="font-size: 0.8em; margin-left: 5px"
-              ></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="about" class="about-us container section-padding">
+            <h2 class="animate-on-scroll fade-in slide-up">About HopeSpire Foundation</h2>
+            <div class="about-content">
+                <div class="about-text animate-on-scroll fade-in slide-from-left">
+                    <h3>Our Mission</h3>
+                    <p>At HopeSpire Foundation, our mission is to ignite and sustain hope within underserved individuals and communities. We achieve this by pioneering and delivering comprehensive programs that create accessible and equitable pathways to quality education, foster robust health and well-being, and cultivate opportunities for sustainable livelihoods. Through collaborative partnerships and community-led initiatives, we empower people to overcome adversity, build essential skills, and forge a path toward self-sufficiency and a brighter, more secure future.</p>
+                    <h3>Our Vision</h3>
+                    <p>HopeSpire Foundation envisions a transformative future where the light of hope illuminates every corner of society, ensuring that all individuals and communities, regardless of their circumstances, are empowered to transcend systemic barriers and unlock their full, inherent potential. We see a world where access to knowledge, healthcare, and economic stability are fundamental rights, not privileges; where communities are resilient, self-determining, and rich in opportunity; and where every person is equipped and inspired to contribute meaningfully, fostering a global society that is truly equitable, deeply compassionate, environmentally conscious, and perpetually thriving for generations to come.</p>
+                    <h3>Our Values</h3>
+                    <ul>
+                        <li><strong>Compassion:</strong> Understanding and acting on the needs of others.</li>
+                        <li><strong>Integrity:</strong> Upholding the highest ethical standards in all our endeavors.</li>
+                        <li><strong>Collaboration:</strong> Working with partners and communities to achieve shared goals.</li>
+                        <li><strong>Impact:</strong> Focusing on creating measurable and sustainable change.</li>
+                        <li><strong>Inclusivity:</strong> Ensuring everyone has a voice and opportunity.</li>
+                    </ul>
+                </div>
+                <div class="about-image animate-on-scroll fade-in slide-from-right">
+                    <img src="img/community-event.png" alt="Community event by HopeSpire Foundation">
+                </div>
+            </div>
+        </section>
 
-    <!-- ****** FOOTER ****** -->
-    <footer class="main-footer" id="about">
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Use</a> |
-        <a href="#">Contact Us</a> | <a href="#">Careers</a>
-      </div>
-      <p>© 2024 Ferroro Automotive. All rights reserved. [Project Demo Only]</p>
-      <p>Inspired by Ferrari.com for educational purposes.</p>
+        <!-- === NEWS SLIDER SECTION START === -->
+        <section class="news-slider-section section-padding animate-on-scroll fade-in slide-up">
+            <div class="container">
+                <h2>Latest News & Stories</h2>
+                <div class="news-slider" id="newsSlider">
+                    <div class="slides-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="slide">
+                            <div class="slide-image">
+                                <img src="img/library.jpg" alt="New School Library Opened">
+                            </div>
+                            <div class="slide-content">
+                                <h3>New School Library Opened in Rural Village</h3>
+                                <p>Thanks to generous donors, we've opened a new library at the Bright Future School, providing over 200 children with access to new books and learning resources.</p>
+                                <a href="#" class="btn btn-primary btn-slide">Read More</a>
+                            </div>
+                        </div>
+                        <!-- Slide 2 -->
+                        <div class="slide">
+                            <div class="slide-image">
+                                <img src="img/healtcare.jpg" alt="Healthcare Camp Success">
+                            </div>
+                            <div class="slide-content">
+                                <h3>Successful Healthcare Camp Serves 500+ Patients</h3>
+                                <p>Our recent mobile healthcare camp provided essential medical check-ups, vaccinations, and health education to over 500 residents in the remote Hilltop community.</p>
+                                <a href="#" class="btn btn-primary btn-slide">Learn More</a>
+                            </div>
+                        </div>
+                        <!-- Slide 3 -->
+                        <div class="slide">
+                            <div class="slide-image">
+                                <img src="img/Graduation.jpg" alt="Vocational Training Graduation">
+                            </div>
+                            <div class="slide-content">
+                                <h3>First Batch of Vocational Trainees Graduate</h3>
+                                <p>We celebrate the graduation of 25 young adults from our vocational training program, now equipped with skills for sustainable employment and entrepreneurship.</p>
+                                <a href="#" class="btn btn-primary btn-slide">Discover Their Stories</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-nav">
+                        <button class="prev-slide" aria-label="Previous Slide">❮</button>
+                        <button class="next-slide" aria-label="Next Slide">❯</button>
+                    </div>
+                </div>
+                <div class="slider-dots" id="sliderDots"></div>
+            </div>
+        </section>
+        <!-- === NEWS SLIDER SECTION END === -->
+
+        <section class="our-impact section-padding-bg">
+            <div class="container">
+                <h2 class="animate-on-scroll fade-in slide-up">Our Impact</h2>
+                <div class="impact-stats">
+                    <div class="stat-item animate-on-scroll fade-in scale-up">
+                        <h3 data-count="10000">0+</h3>
+                        <p>Lives Touched</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll fade-in scale-up">
+                        <h3 data-count="50">0+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll fade-in scale-up">
+                        <h3 data-count="1000">0+</h3>
+                        <p>Volunteers Engaged</p>
+                    </div>
+                    <div class="stat-item animate-on-scroll fade-in scale-up">
+                        <h3 data-count="5">0</h3>
+                        <p>Regions Served</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="call-to-action container section-padding">
+            <h2 class="animate-on-scroll fade-in slide-up">Get Involved</h2>
+            <p class="animate-on-scroll fade-in slide-up" style="transition-delay: 0.1s;">Your support can make a real difference. Join us in our mission to create positive change.</p>
+            <div class="cta-buttons">
+                <a href="Contact.html#donate" class="btn btn-primary animate-on-scroll scale-up">Donate</a>
+                <a href="Contact.html#volunteer" class="btn btn-secondary animate-on-scroll scale-up">Volunteer</a>
+                <a href="gallery.html" class="btn btn-secondary animate-on-scroll scale-up">See Our Work</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> HopeSpire Foundation. All Rights Reserved.</p>
+            <p>Empowering Communities, Inspiring Hope.</p>
+        </div>
     </footer>
 
-    <!-- ======================== JAVASCRIPT (Link ke Fail Luaran) ======================== -->
-    <script src="script.js" defer></script>
-  </body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // Mobile Navigation Toggle
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelector('.nav-links');
+
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    navToggle.classList.toggle('active'); 
+                });
+            }
+
+            // Set current year in footer
+            const currentYearSpan = document.getElementById('currentYear');
+            if (currentYearSpan) {
+                currentYearSpan.textContent = new Date().getFullYear();
+            }
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                if (anchor.getAttribute('href').length > 1) { 
+                    anchor.addEventListener('click', function (e) {
+                        const targetId = this.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            e.preventDefault();
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    });
+                }
+            });
+
+            // === JAVASCRIPT FOR ANIMATIONS START ===
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.1 
+            });
+
+            animatedElements.forEach(el => {
+                observer.observe(el);
+            });
+
+            // Count-up animation for stats
+            const statNumbers = document.querySelectorAll('.stat-item h3[data-count]');
+            statNumbers.forEach(statNum => {
+                const targetCount = parseInt(statNum.dataset.count);
+                let currentCount = 0;
+                const statItemObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting && !statNum.classList.contains('counted')) {
+                            statNum.classList.add('counted'); 
+                            const increment = Math.ceil(targetCount / 100); 
+                            const updateCount = () => {
+                                currentCount += increment;
+                                if (currentCount < targetCount) {
+                                    statNum.textContent = currentCount.toLocaleString() + (statNum.textContent.includes('+') ? '+' : '');
+                                    requestAnimationFrame(updateCount);
+                                } else {
+                                    statNum.textContent = targetCount.toLocaleString() + (statNum.textContent.includes('+') ? '+' : '');
+                                }
+                            };
+                            requestAnimationFrame(updateCount);
+                            statItemObserver.unobserve(entry.target.closest('.stat-item')); 
+                        }
+                    });
+                }, { threshold: 0.5 }); 
+                const parentStatItem = statNum.closest('.stat-item');
+                if (parentStatItem) {
+                    statItemObserver.observe(parentStatItem);
+                }
+            });
+            // === JAVASCRIPT FOR ANIMATIONS END ===
+
+            // === NEWS SLIDER JAVASCRIPT START ===
+            const newsSlider = document.getElementById('newsSlider');
+            if (newsSlider) {
+                const slidesWrapper = newsSlider.querySelector('.slides-wrapper');
+                const slides = Array.from(slidesWrapper.querySelectorAll('.slide'));
+                const nextButton = newsSlider.querySelector('.next-slide');
+                const prevButton = newsSlider.querySelector('.prev-slide');
+                const dotsContainer = document.getElementById('sliderDots');
+                let currentIndex = 0;
+                let slideInterval;
+                const slideDuration = 10000; // 10 seconds per slide
+
+                function updateDots() {
+                    if (!dotsContainer) return;
+                    dotsContainer.innerHTML = ''; 
+                    slides.forEach((_, index) => {
+                        const dot = document.createElement('span');
+                        dot.classList.add('dot');
+                        if (index === currentIndex) {
+                            dot.classList.add('active');
+                        }
+                        dot.addEventListener('click', () => {
+                            goToSlide(index);
+                            resetInterval();
+                        });
+                        dotsContainer.appendChild(dot);
+                    });
+                }
+
+                function goToSlide(index) {
+                    slidesWrapper.style.transform = `translateX(-${index * 100}%)`;
+                    currentIndex = index;
+                    updateDots();
+                }
+
+                function nextSlide() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    goToSlide(currentIndex);
+                }
+
+                function prevSlide() {
+                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                    goToSlide(currentIndex);
+                }
+
+                function startInterval() {
+                    slideInterval = setInterval(nextSlide, slideDuration);
+                }
+
+                function resetInterval() {
+                    clearInterval(slideInterval);
+                    startInterval();
+                }
+
+                if (nextButton && prevButton) {
+                    nextButton.addEventListener('click', () => {
+                        nextSlide();
+                        resetInterval();
+                    });
+                    prevButton.addEventListener('click', () => {
+                        prevSlide();
+                        resetInterval();
+                    });
+                }
+                
+                newsSlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                newsSlider.addEventListener('mouseleave', startInterval);
+
+                // Initialize
+                if (slides.length > 0) {
+                    updateDots();
+                    startInterval();
+                }
+            }
+            // === NEWS SLIDER JAVASCRIPT END ===
+
+
+            // Basic Form Submission Handling (Placeholder) 
+            // (contactForm and feedbackForm are not on this page)
+        });
+    </script>
+</body>
 </html>
