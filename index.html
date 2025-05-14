@@ -175,35 +175,35 @@
             border-radius: 5px;
             font-weight: bold;
             text-transform: uppercase;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Added box-shadow for hover */
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; 
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
             margin: 5px;
         }
 
         .btn-primary {
-            background-color: #FFA500; /* Accent Orange */
+            background-color: #FFA500; 
             color: #fff;
             border: 2px solid #FFA500;
         }
 
         .btn-primary:hover {
-            background-color: #cc8400; /* Darker Orange */
+            background-color: #cc8400; 
             color: #fff;
-            transform: translateY(-3px) scale(1.03); /* Enhanced hover */
+            transform: translateY(-3px) scale(1.03); 
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
         .btn-secondary {
-            background-color: #0077B6; /* Primary Blue */
+            background-color: #0077B6; 
             color: #fff;
             border: 2px solid #0077B6;
         }
 
         .btn-secondary:hover {
-            background-color: #005A8D; /* Darker Blue */
+            background-color: #005A8D; 
             color: #fff;
-            transform: translateY(-3px) scale(1.03); /* Enhanced hover */
+            transform: translateY(-3px) scale(1.03); 
             box-shadow: 0 4px 8px rgba(0,0,0,0.15);
         }
 
@@ -216,11 +216,11 @@
             align-items: center;
             justify-content: center;
             padding: 40px 15px;
-            overflow: hidden; /* For hero content animation */
+            overflow: hidden; 
         }
 
         .hero .hero-content {
-            background-image: url('img/hero-banner.jpg'); /* Adjusted path */
+            background-image: url('img/hero-banner.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -232,10 +232,9 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             position: relative;
             z-index: 1;
-             /* ANIMATION: Initial state for hero content */
             opacity: 0;
             transform: translateY(30px);
-            animation: hero-content-load 0.8s 0.3s forwards ease-out; /* name duration delay fill-mode timing-function */
+            animation: hero-content-load 0.8s 0.3s forwards ease-out; 
         }
 
         .hero .hero-content::before {
@@ -271,7 +270,7 @@
         }
 
         /* About Us Section */
-        .about-us h2, .news-slider-section h2, .our-impact h2, .call-to-action h2 { /* Added .news-slider-section h2 */
+        .about-us h2, .news-slider-section h2, .our-impact h2, .call-to-action h2 { 
             text-align: center;
             margin-bottom: 40px;
         }
@@ -280,7 +279,7 @@
             display: flex;
             gap: 30px;
             align-items: center;
-            overflow: hidden; /* Contain child animations */
+            overflow: hidden; 
         }
         .about-text {
             flex: 1;
@@ -292,7 +291,7 @@
         .about-image img {
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.4s ease-out; /* Hover effect for image */
+            transition: transform 0.4s ease-out; 
         }
         .about-image img:hover {
             transform: scale(1.05);
@@ -308,30 +307,30 @@
         /* === NEWS SLIDER STYLES START === */
         .news-slider-section {
             background-color: #fff; 
-            overflow: hidden; /* Contain animations */
+            overflow: hidden; 
         }
         .news-slider {
             position: relative;
-            max-width: 900px; /* Max width of the slider content */
-            margin: 0 auto; /* Center the slider */
-            overflow: hidden; /* Crucial for the sliding effect */
+            max-width: 900px; 
+            margin: 0 auto; 
+            overflow: hidden; 
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         .slides-wrapper {
             display: flex;
-            transition: transform 0.5s ease-in-out; /* This creates the slide animation */
+            transition: transform 0.5s ease-in-out; 
         }
         .slide {
             min-width: 100%;
             box-sizing: border-box;
-            display: flex; /* For side-by-side image and text */
+            display: flex; 
             align-items: center;
             background-color: #fdfdfd;
         }
         .slide-image {
-            flex: 0 0 40%; /* Image takes 40% width */
-            max-height: 350px; /* Control image height */
+            flex: 0 0 40%; 
+            max-height: 350px; 
             overflow: hidden;
         }
         .slide-image img {
@@ -340,7 +339,7 @@
             object-fit: cover;
         }
         .slide-content {
-            flex: 1; /* Text content takes remaining space */
+            flex: 1; 
             padding: 25px 30px;
         }
         .slide-content h3 {
@@ -359,7 +358,6 @@
             padding: 8px 18px;
         }
 
-        /* Slider Navigation Arrows */
         .slider-nav {
             position: absolute;
             top: 50%;
@@ -367,7 +365,7 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
-            padding: 0 10px; /* Keep arrows slightly inset */
+            padding: 0 10px; 
             z-index: 10;
         }
         .slider-nav button {
@@ -387,7 +385,6 @@
         .prev-slide { margin-left: 5px; }
         .next-slide { margin-right: 5px; }
 
-        /* Slider Dots */
         .slider-dots {
             text-align: center;
             padding-top: 15px;
@@ -423,7 +420,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.08);
             min-width: 200px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* For hover */
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
         }
         .stat-item:hover {
             transform: translateY(-5px);
@@ -432,7 +429,7 @@
 
         .stat-item h3 {
             font-size: 2.5rem;
-            color: #FFA500; /* Accent Orange */
+            color: #FFA500; 
             margin-bottom: 0.5rem;
         }
 
@@ -482,17 +479,14 @@
             transform: translateY(0) translateX(0) scale(1);
         }
 
-        /* Staggered animation delays for stat items */
         .stat-item.animate-on-scroll:nth-child(1).is-visible { transition-delay: 0.1s; }
         .stat-item.animate-on-scroll:nth-child(2).is-visible { transition-delay: 0.2s; }
         .stat-item.animate-on-scroll:nth-child(3).is-visible { transition-delay: 0.3s; }
         .stat-item.animate-on-scroll:nth-child(4).is-visible { transition-delay: 0.4s; }
 
-        /* Staggered animation for CTA buttons */
         .cta-buttons .btn.animate-on-scroll:nth-child(1).is-visible { transition-delay: 0.1s; }
         .cta-buttons .btn.animate-on-scroll:nth-child(2).is-visible { transition-delay: 0.2s; }
         .cta-buttons .btn.animate-on-scroll:nth-child(3).is-visible { transition-delay: 0.3s; }
-
         /* === ANIMATION STYLES END === */
 
         /* Responsive Design */
@@ -563,18 +557,33 @@
             .about-image {
                 margin-top: 20px;
             }
-            .animate-on-scroll.slide-from-left { transform: translateX(-30px); }
-            .animate-on-scroll.slide-from-right { transform: translateX(30px); }
+            
+            /* === MOBILE ANIMATION OVERRIDES FOR SLIDING ELEMENTS === */
+            /* Untuk About Section */
+            .about-us .about-text.animate-on-scroll.slide-from-left {
+                transform: translateX(-30px) !important; 
+                opacity: 0;
+            }
+            .about-us .about-image.animate-on-scroll.slide-from-right {
+                transform: translateX(30px) !important; 
+                opacity: 0;
+            }
 
-            /* News Slider Responsive */
+            .about-us .about-text.animate-on-scroll.slide-from-left.is-visible,
+            .about-us .about-image.animate-on-scroll.slide-from-right.is-visible {
+                opacity: 1;
+                transform: translateX(0) !important; 
+            }
+            /* === END MOBILE ANIMATION OVERRIDES === */
+
             .slide {
-                flex-direction: column; /* Stack image and text on small screens */
+                flex-direction: column; 
                 text-align: center;
             }
             .slide-image {
-                flex: 0 0 auto; /* Let image take its natural height */
+                flex: 0 0 auto; 
                 width: 100%;
-                max-height: 250px; /* Adjust height for mobile */
+                max-height: 250px; 
             }
             .slide-content {
                 padding: 20px;
@@ -586,7 +595,6 @@
                 padding: 8px 10px;
                 font-size: 1rem;
             }
-
 
             .impact-stats {
                 flex-direction: column;
@@ -621,6 +629,16 @@
             }
             .slide-content h3 { font-size: 1.2rem; }
             .slide-content p { font-size: 0.9rem; }
+
+            /* Mobile animation overrides from 768px will cascade down.
+               If even smaller slide distance is needed for 480px:
+            .about-us .about-text.animate-on-scroll.slide-from-left {
+                transform: translateX(-20px) !important; 
+            }
+            .about-us .about-image.animate-on-scroll.slide-from-right {
+                transform: translateX(20px) !important; 
+            }
+            */
         }
     </style>
 </head>
@@ -679,13 +697,11 @@
             </div>
         </section>
 
-        <!-- === NEWS SLIDER SECTION START === -->
         <section class="news-slider-section section-padding animate-on-scroll fade-in slide-up">
             <div class="container">
                 <h2>Latest News & Stories</h2>
                 <div class="news-slider" id="newsSlider">
                     <div class="slides-wrapper">
-                        <!-- Slide 1 -->
                         <div class="slide">
                             <div class="slide-image">
                                 <img src="img/library.jpg" alt="New School Library Opened">
@@ -696,7 +712,6 @@
                                 <a href="#" class="btn btn-primary btn-slide">Read More</a>
                             </div>
                         </div>
-                        <!-- Slide 2 -->
                         <div class="slide">
                             <div class="slide-image">
                                 <img src="img/healtcare.jpg" alt="Healthcare Camp Success">
@@ -707,7 +722,6 @@
                                 <a href="#" class="btn btn-primary btn-slide">Learn More</a>
                             </div>
                         </div>
-                        <!-- Slide 3 -->
                         <div class="slide">
                             <div class="slide-image">
                                 <img src="img/Graduation.jpg" alt="Vocational Training Graduation">
@@ -727,7 +741,6 @@
                 <div class="slider-dots" id="sliderDots"></div>
             </div>
         </section>
-        <!-- === NEWS SLIDER SECTION END === -->
 
         <section class="our-impact section-padding-bg">
             <div class="container">
@@ -813,7 +826,9 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
-                        // observer.unobserve(entry.target); 
+                    } else {
+                        // Untuk animasi "keluar", pastikan baris ini tidak dikomen
+                        entry.target.classList.remove('is-visible');
                     }
                 });
             }, {
@@ -865,7 +880,7 @@
                 const dotsContainer = document.getElementById('sliderDots');
                 let currentIndex = 0;
                 let slideInterval;
-                const slideDuration = 10000; // 10 seconds per slide
+                const slideDuration = 10000; 
 
                 function updateDots() {
                     if (!dotsContainer) return;
@@ -923,17 +938,12 @@
                 newsSlider.addEventListener('mouseenter', () => clearInterval(slideInterval));
                 newsSlider.addEventListener('mouseleave', startInterval);
 
-                // Initialize
                 if (slides.length > 0) {
                     updateDots();
                     startInterval();
                 }
             }
             // === NEWS SLIDER JAVASCRIPT END ===
-
-
-            // Basic Form Submission Handling (Placeholder) 
-            // (contactForm and feedbackForm are not on this page)
         });
     </script>
 </body>
