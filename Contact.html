@@ -213,14 +213,14 @@
             padding: 40px 0;
             overflow: hidden; /* For animation */
         }
-         .page-title-section .container > h2,
-         .page-title-section .container > p {
+        .page-title-section .container > h2,
+        .page-title-section .container > p {
             opacity: 0;
             transform: translateY(20px);
-         }
+        }
 
         /* Contact and Feedback Form Section */
-        .contact-form-section { /* Added for potential overall section animation */
+        .contact-form-section {
             overflow: hidden; 
         }
         .contact-content-wrapper {
@@ -230,12 +230,14 @@
         }
         .contact-form-container {
             flex: 2; /* Takes more space */
+            /* padding-left: 0; Default, will be overridden in media query */
         }
         .contact-info-container {
             flex: 1; /* Takes less space */
             background-color: #eef7fa;
             padding: 25px;
             border-radius: 8px;
+            /* text-align: left; Default, will be overridden */
         }
         .contact-info-container h3 {
             margin-top: 20px;
@@ -260,6 +262,8 @@
             margin-bottom: 0.5rem;
             font-weight: bold;
             color: #444;
+            word-wrap: break-word; 
+            overflow-wrap: break-word; 
         }
 
         .form-group input[type="text"],
@@ -291,7 +295,7 @@
             margin-top: 40px; 
             background-color: #fff; 
             padding-bottom: 0; 
-            overflow: hidden; /* for map animation */
+            overflow: hidden; 
         }
         .map-section h3 {
             text-align: center;
@@ -303,7 +307,7 @@
 
         /* Footer */
         footer {
-            background-color: #00334E; /* Darker Blue for footer */
+            background-color: #00334E; 
             color: #e0e0e0;
             text-align: center;
             padding: 30px 0;
@@ -348,6 +352,12 @@
         /* === ANIMATION STYLES END === */
 
         /* Responsive Design */
+        @media (max-width: 992px) { 
+            .contact-content-wrapper {
+                gap: 30px; 
+            }
+        }
+
         @media (max-width: 768px) {
             .logo-link h1 {
                 font-size: 1.4rem;
@@ -397,31 +407,97 @@
             
             .contact-content-wrapper {
                 flex-direction: column;
+                gap: 30px; 
+            }
+            .contact-form-container {
+                padding-left: 10px; /* <<< FIX: Tambah padding kiri untuk borang */
+                padding-right: 10px; /* <<< FIX: Tambah padding kanan juga untuk simetri */
             }
             .contact-info-container {
-                margin-top: 30px;
+                margin-top: 0; 
+                text-align: center; /* <<< FIX: Tengahkan teks dalam info box */
             }
-            /* ANIMATION: Adjust slide distances for smaller screens if needed */
+
             .animate-on-scroll.slide-from-left { transform: translateX(-30px); }
             .animate-on-scroll.slide-from-right { transform: translateX(30px); }
+
+            .section-padding,
+            .section-padding-bg {
+                padding: 40px 0; 
+            }
+            .page-title-section {
+                padding: 30px 0; 
+            }
+            .map-section iframe {
+                height: 350px; 
+            }
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+
+            .form-group label {
+                font-size: 0.95rem; 
+            }
         }
 
         @media (max-width: 480px) {
             h1 { font-size: 2rem; }
-            h2 { font-size: 1.7rem; }
-            h3 { font-size: 1.3rem; }
+            h2 { font-size: 1.6rem; } 
+            h3 { font-size: 1.25rem; } 
+            
             .btn {
-                padding: 10px 20px;
+                padding: 10px 18px; 
                 font-size: 0.8rem;
             }
             .logo {
                 height: 40px;
             }
-             .logo-link h1 {
+            .logo-link h1 {
                 font-size: 1.2rem;
+            }
+
+            .section-padding,
+            .section-padding-bg {
+                padding: 30px 0; 
+            }
+            .page-title-section {
+                padding: 25px 0; 
+            }
+            .map-section iframe {
+                height: 300px; 
+            }
+            .contact-content-wrapper {
+                gap: 20px; 
+            }
+            .contact-form-container {
+                padding-left: 15px; /* <<< FIX: Tingkatkan sedikit padding kiri untuk skrin lebih kecil */
+                padding-right: 15px; /* <<< FIX: Tingkatkan sedikit padding kanan juga */
+            }
+            
+            .form-group {
+                margin-bottom: 1rem; 
+            }
+            .form-group label {
+                font-size: 0.875rem; 
+                margin-bottom: 0.3rem; 
+                line-height: 1.4; 
+            }
+            .form-group input[type="text"],
+            .form-group input[type="email"],
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 8px; 
+                font-size: 0.9rem; 
+            }
+
+            footer {
+                padding: 20px 0; 
+            }
+            footer p {
+                font-size: 0.85rem;
             }
         }
     </style>
+
 </head>
 <body>
     <header>
@@ -445,172 +521,163 @@
         </div>
     </header>
 
-    <main>
-        <section class="page-title-section">
-            <div class="container">
-                <!-- ANIMATION: Added classes for page title elements -->
-                <h2 class="animate-on-scroll fade-in slide-up">Get In Touch</h2>
-                <p class="animate-on-scroll fade-in slide-up" style="transition-delay: 0.1s;">We'd love to hear from you. Reach out with any questions, or to learn how you can support our cause.</p>
-            </div>
-        </section>
-
-        <section class="contact-form-section container section-padding">
-            <div class="contact-content-wrapper">
-                <!-- ANIMATION: Added classes to form container -->
-                <div class="contact-form-container animate-on-scroll fade-in slide-from-left">
-                    <h3>Send Us a Message</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <label for="name">Full Name:</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email Address:</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message:</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </form>
-                </div>
-
-                <!-- ANIMATION: Added classes to info container -->
-                <div class="contact-info-container animate-on-scroll fade-in slide-from-right" style="transition-delay: 0.2s;">
-                    <h3>Contact Information</h3>
-                    <p><strong>Address:</strong><br>No 345 Jalan Alor Lintang, Kubang Kerian , Kuala Terengganu 75350 Singapore</p>
-                    <p><strong>Phone:</strong><br><a href="tel:+1234567890">(60) 19-446-9358</a></p>
-                    <p><strong>Email:</strong><br><a href="mailto:sufiazha1812@gmai.com">info@hopespire.org</a></p>
-                    
-                    <h3 id="donate">Support Us</h3>
-                    <p>Your generous donations help us continue our work. Every contribution makes a difference.</p>
-                    <a href="#" class="btn btn-secondary">Donate Online</a>
-
-                    <h3 id="volunteer">Volunteer With Us</h3>
-                    <p>Join our team of passionate volunteers and contribute your time and skills.</p>
-                    <a href="#" class="btn btn-secondary">Become a Volunteer</a>
-                </div>
-            </div>
-        </section>
-        
-        <section class="map-section">
-             <div class="container">
-                <!-- ANIMATION: Added classes to map heading -->
-                <h3 class="animate-on-scroll fade-in slide-up">Our Location</h3>
-            </div>
-            <!-- ANIMATION: Added classes to iframe parent or iframe itself if possible, here to iframe directly for simplicity -->
-            <iframe class="animate-on-scroll fade-in" style="transition-delay: 0.2s;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2449.6483765773814!2d103.09331467403018!3d5.239553271086112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7c100762853d1%3A0x130aab00cbea50b2!2sRumah%20Khairul%20Azha!5e1!3m2!1sen!2smy!4v1747191732265!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </section>
-
-    </main>
-
-    <footer>
+<main>
+    <section class="page-title-section">
         <div class="container">
-            <p>© <span id="currentYear"></span> HopeSpire Foundation. All Rights Reserved.</p>
-            <p>Empowering Communities, Inspiring Hope.</p>
+            <h2 class="animate-on-scroll fade-in slide-up">Get In Touch</h2>
+            <p class="animate-on-scroll fade-in slide-up" style="transition-delay: 0.1s;">We'd love to hear from you. Reach out with any questions, or to learn how you can support our cause.</p>
         </div>
-    </footer>
+    </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <section class="contact-form-section container section-padding">
+        <div class="contact-content-wrapper">
+            <div class="contact-form-container animate-on-scroll fade-in slide-from-left">
+                <h3>Send Us a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
 
-            // Mobile Navigation Toggle
-            const navToggle = document.querySelector('.nav-toggle');
-            const navLinks = document.querySelector('.nav-links');
+            <div class="contact-info-container animate-on-scroll fade-in slide-from-right" style="transition-delay: 0.2s;">
+                <h3>Contact Information</h3>
+                <p><strong>Address:</strong><br>No 345 Jalan Alor Lintang, Kubang Kerian , Kuala Terengganu 75350 Singapore</p>
+                <p><strong>Phone:</strong><br><a href="tel:+1234567890">(60) 19-446-9358</a></p>
+                <p><strong>Email:</strong><br><a href="mailto:sufiazha1812@gmai.com">info@hopespire.org</a></p>
+                
+                <h3 id="donate">Support Us</h3>
+                <p>Your generous donations help us continue our work. Every contribution makes a difference.</p>
+                <a href="#" class="btn btn-secondary">Donate Online</a>
 
-            if (navToggle && navLinks) {
-                navToggle.addEventListener('click', () => {
-                    navLinks.classList.toggle('active');
-                    navToggle.classList.toggle('active'); // For hamburger animation
-                });
-            }
+                <h3 id="volunteer">Volunteer With Us</h3>
+                <p>Join our team of passionate volunteers and contribute your time and skills.</p>
+                <a href="#" class="btn btn-secondary">Become a Volunteer</a>
+            </div>
+        </div>
+    </section>
+    
+    <section class="map-section">
+         <div class="container">
+            <h3 class="animate-on-scroll fade-in slide-up">Our Location</h3>
+        </div>
+        <iframe class="animate-on-scroll fade-in" style="transition-delay: 0.2s;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2449.6483765773814!2d103.09331467403018!3d5.239553271086112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31b7c100762853d1%3A0x130aab00cbea50b2!2sRumah%20Khairul%20Azha!5e1!3m2!1sen!2smy!4v1747191732265!5m2!1sen!2smy" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </section>
 
-            // Set current year in footer
-            const currentYearSpan = document.getElementById('currentYear');
-            if (currentYearSpan) {
-                currentYearSpan.textContent = new Date().getFullYear();
-            }
+</main>
 
-            // Smooth scroll for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                if (anchor.getAttribute('href').length > 1) { 
-                    anchor.addEventListener('click', function (e) {
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            e.preventDefault();
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
-                }
+<footer>
+    <div class="container">
+        <p>© <span id="currentYear"></span> HopeSpire Foundation. All Rights Reserved.</p>
+        <p>Empowering Communities, Inspiring Hope.</p>
+    </div>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        // Mobile Navigation Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navToggle.classList.toggle('active'); 
             });
+        }
 
-            // === JAVASCRIPT FOR ANIMATIONS START ===
-            const animatedElements = document.querySelectorAll('.animate-on-scroll');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        // Optional: observer.unobserve(entry.target); 
+        // Set current year in footer
+        const currentYearSpan = document.getElementById('currentYear');
+        if (currentYearSpan) {
+            currentYearSpan.textContent = new Date().getFullYear();
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            if (anchor.getAttribute('href').length > 1) { 
+                anchor.addEventListener('click', function (e) {
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
                     }
-                    // else { entry.target.classList.remove('is-visible'); } // For re-animation
-                });
-            }, {
-                threshold: 0.1 
-            });
-
-            animatedElements.forEach(el => {
-                observer.observe(el);
-            });
-            
-            const pageTitleHeading = document.querySelector('.page-title-section .container > h2');
-            const pageTitleParagraph = document.querySelector('.page-title-section .container > p');
-
-            if(pageTitleHeading && pageTitleParagraph){
-                 // For elements that should animate on page load (not scroll-dependent)
-                // We can ensure they become visible if already in viewport
-                const initialObserver = new IntersectionObserver(entries => {
-                    entries.forEach(entry => {
-                        if(entry.isIntersecting){
-                            entry.target.classList.add('is-visible'); // Use is-visible for consistency if classes are already set
-                            initialObserver.unobserve(entry.target);
-                        }
-                    });
-                }, { threshold: 0.01 }); 
-
-                if (pageTitleHeading.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleHeading);
-                if (pageTitleParagraph.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleParagraph);
-            }
-            // === JAVASCRIPT FOR ANIMATIONS END ===
-
-
-            // Basic Form Submission Handling (Placeholder)
-            const actualContactForm = document.getElementById('contactForm'); // This form IS on this page
-            if (actualContactForm) {
-                actualContactForm.addEventListener('submit', function(e) {
-                    e.preventDefault(); 
-                    const name = actualContactForm.querySelector('#name').value;
-                    const email = actualContactForm.querySelector('#email').value;
-                    const message = actualContactForm.querySelector('#message').value;
-
-                    if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
-                        alert('Please fill in all required fields.');
-                        return;
-                    }
-                    alert('Thank you for your message! (This is a demo - no data was sent)');
-                    actualContactForm.reset();
                 });
             }
-
-            // const feedbackForm = document.getElementById('feedbackForm'); // This will be null
         });
-    </script>
+
+        // === JAVASCRIPT FOR ANIMATIONS START ===
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    // Optional: observer.unobserve(entry.target); 
+                }
+                // else { entry.target.classList.remove('is-visible'); } // For re-animation
+            });
+        }, {
+            threshold: 0.1 
+        });
+
+        animatedElements.forEach(el => {
+            observer.observe(el);
+        });
+        
+        const pageTitleHeading = document.querySelector('.page-title-section .container > h2');
+        const pageTitleParagraph = document.querySelector('.page-title-section .container > p');
+
+        if(pageTitleHeading && pageTitleParagraph){
+            const initialObserver = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting){
+                        entry.target.classList.add('is-visible'); 
+                        initialObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.01 }); 
+
+            if (pageTitleHeading.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleHeading);
+            if (pageTitleParagraph.classList.contains('animate-on-scroll')) initialObserver.observe(pageTitleParagraph);
+        }
+        // === JAVASCRIPT FOR ANIMATIONS END ===
+
+
+        // Basic Form Submission Handling (Placeholder)
+        const actualContactForm = document.getElementById('contactForm'); 
+        if (actualContactForm) {
+            actualContactForm.addEventListener('submit', function(e) {
+                e.preventDefault(); 
+                const name = actualContactForm.querySelector('#name').value;
+                const email = actualContactForm.querySelector('#email').value;
+                const message = actualContactForm.querySelector('#message').value;
+
+                if (name.trim() === '' || email.trim() === '' || message.trim() === '') {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+                alert('Thank you for your message! (This is a demo - no data was sent)');
+                actualContactForm.reset();
+            });
+        }
+    });
+</script>
 </body>
 </html>
