@@ -630,15 +630,6 @@
             .slide-content h3 { font-size: 1.2rem; }
             .slide-content p { font-size: 0.9rem; }
 
-            /* Mobile animation overrides from 768px will cascade down.
-               If even smaller slide distance is needed for 480px:
-            .about-us .about-text.animate-on-scroll.slide-from-left {
-                transform: translateX(-20px) !important; 
-            }
-            .about-us .about-image.animate-on-scroll.slide-from-right {
-                transform: translateX(20px) !important; 
-            }
-            */
         }
     </style>
 </head>
@@ -827,7 +818,6 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible');
                     } else {
-                        // Untuk animasi "keluar", pastikan baris ini tidak dikomen
                         entry.target.classList.remove('is-visible');
                     }
                 });
